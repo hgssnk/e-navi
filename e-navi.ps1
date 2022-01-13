@@ -60,11 +60,22 @@ class ENavi
     }
 }
 
+$INPUT_CSV_PATH
+Add-Type -AssemblyName System.Windows.Forms
+# 入力ファイル選択
+$FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ 
+    InitialDirectory = 'C:\Users\AWVZXS010\Documents\chromedriver_win32\e-navi' 
+    Filter = 'すべてのファイル|*'
+    Title = 'select file'
+}
+if($FileBrowser.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK){
+    $INPUT_CSV_PATH = $FileBrowser.FileName
+}
+
 # configファイル読込
-$lines = get-content ".\config.ini"
+$lines = get-content $INPUT_CSV_PATH
 $data = @()
 foreach($line in $lines){
-
     if($line -match "^$"){ continue }
     if($line -match "^\s*;"){ continue }
 
