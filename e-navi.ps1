@@ -64,7 +64,7 @@ $INPUT_CSV_PATH
 Add-Type -AssemblyName System.Windows.Forms
 # 入力ファイル選択
 $FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ 
-    InitialDirectory = 'C:\Users\AWVZXS010\Documents\chromedriver_win32\e-navi' 
+    InitialDirectory = '.\' 
     Filter = 'すべてのファイル|*'
     Title = 'select file'
 }
